@@ -1,5 +1,29 @@
 {% extends 'base.html' %}
 
 {% block bloco %}
-<h1>Você está na página adoção</h1>
+
+{% if animais %}
+<div class="box">
+  <ul id="pet-list-search" class="list-inline pet-list-index">
+    {% for Animal in animais %}
+      <li class="card mb-4 shadow">
+        <a class="card-bod" href="#">
+          <div>
+            <img class="imagemCardAnimal" src="{{Animal.imagemAnimal.url}}" />
+          </div>
+          <div >
+            <p class="name">{{Animal.nomeAnimal}}</p>
+            <p class="state">{{Animal.get_sexo_display}}</p>
+            <div >
+              {{Animal.get_porte_display}}
+            </div>
+          </div>
+        </a>  
+      </li>
+    {% endfor %}
+  </ul>
+  </div>
+{% endif %}
+
+
 {% endblock %}

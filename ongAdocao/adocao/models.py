@@ -37,11 +37,15 @@ class Animal(models.Model):
         (8, 'Nao informado')
     )
     sexo = models.IntegerField(choices=escolhasS, default=8)
-    raca = models.IntegerField(choices=escolhasR, default=8)
+    especie = models.IntegerField(choices=escolhasR, default=8)
     porte = models.IntegerField(choices=escolhasP, default=8)
 
     def __str__(self):
-        return self.nomeAnimal
+        return f"{self.nomeAnimal} ({self.descricao})"
+
+    
+    class Meta:
+        verbose_name_plural = 'animais'
 
 class Pessoa(models.Model):
     nomePessoa = models.CharField(
@@ -67,3 +71,6 @@ class Adocao(models.Model):
     funcionario = models.ForeignKey(User,on_delete=models.CASCADE)
     def __str__(self):
         return self.animal.nomeAnimal
+
+    class Meta:
+        verbose_name_plural = 'adoções'

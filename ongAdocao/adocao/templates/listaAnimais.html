@@ -13,10 +13,12 @@
             </thead>
             <tbody>
                 {% for Animal in animais %}
-                    <th><img class="imagemAnimal" src="{{Animal.imagemAnimal.url}}"></th>
-                    <th><p>{{Animal.nomeAnimal}}</p></th>
-                    <th><p>{{Animal.get_sexo_display}}</p></th>
-                    <th><p>{{Animal.get_porte_display}}</p></th>
+                    <tr>
+                        <th><img class="imagemAnimal" src="{{Animal.imagemAnimal.url}}"></th>
+                        <th><p>{{Animal.nomeAnimal}}</p></th>
+                        <th><p>{{Animal.get_sexo_display}}</p></th>
+                        <th><p>{{Animal.get_porte_display}}</p></th>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>
