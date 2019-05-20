@@ -1,29 +1,48 @@
 {% extends 'base.html' %}
 
 {% block bloco %}
+{% load staticfiles %}
 
-{% if animais %}
 <div class="box">
-  <ul id="pet-list-search" class="list-inline pet-list-index">
-    {% for Animal in animais %}
-      <li class="card mb-4 shadow">
-        <a class="card-bod" href="#">
-          <div>
-            <img class="imagemCardAnimal" src="{{Animal.imagemAnimal.url}}" />
-          </div>
-          <div >
-            <p class="name">{{Animal.nomeAnimal}}</p>
-            <p class="state">{{Animal.get_sexo_display}}</p>
-            <div >
-              {{Animal.get_porte_display}}
-            </div>
-          </div>
-        </a>  
-      </li>
-    {% endfor %}
-  </ul>
-  </div>
-{% endif %}
+    <h1>Nossos peludos estão ansiosos á espera de um lar!</h1>
+        <ul class="cards">
+            {% for Animal in animais %}
+            <li class="cards_item"> 
+            <a href="#">
+                <div class="card">
+                    <div class="card_image">
+                        <img src="{{Animal.imagemAnimal.url}} ">
+                    </div>
+            </a>           
+                    <div class="card_content">
+                        <h2 class="card_title">{{Animal.nomeAnimal}}</h2>
+                        <p class="card_text">{{Animal.get_sexo_display}}</p>
+                        <p class="card_text">{{Animal.get_porte_display}}</p>
+                        <div class="botao">
+                            <button class="btn card_btn">Ver Mais</button>
+                        </div>
+                        
+                    </div>
+                </div>
+             
+            </li>
+            {% endfor %}
+        </ul>
+</div>
 
+
+<div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if animais.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">Primeira</a></li>
+        {% endif %}
+        {% if animais.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ animais.next_page_number }}">Próxima</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ animais.paginator.num_pages }}">Última</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    </div>
 
 {% endblock %}

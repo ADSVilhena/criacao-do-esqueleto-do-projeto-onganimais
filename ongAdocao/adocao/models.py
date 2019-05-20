@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib import admin
 from django.utils.timezone import now
 from django.contrib.auth.models import User
 
@@ -69,6 +69,9 @@ class Adocao(models.Model):
     animal = models.ForeignKey(Animal,on_delete=models.CASCADE)
     pessoa = models.ForeignKey(Pessoa,on_delete=models.CASCADE)
     funcionario = models.ForeignKey(User,on_delete=models.CASCADE)
+    
+    
+
     def __str__(self):
         return self.animal.nomeAnimal
 
