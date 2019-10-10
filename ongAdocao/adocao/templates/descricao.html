@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
-
 {% block bloco %}
-{% load staticfiles %}
-
-    <h1>Nossos peludos estão ansiosos á espera de um lar!</h1>
-
-    {% endblock %}
-
-
+<div class="d-flex flex-column">
+    <div class="d-flex justify-content-center py-2">
+        <img class="img-fuid border border-warning rounded" style="max-height:300px;" src="{{animal.imagemAnimal.url}}" class="img-thumbnail">
+    </div>
+    <div class="d-flex flex-column text-center">
+        <h3>{{animal.nomeAnimal}}</h3>
+        <p class="card_text">{{animal.get_sexo_display}}</p>
+        <p class="card_text">{{animal.get_porte_display}}</p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn botao btn-outline-warning" type="submit">Adotar</button>
+    </div>
+</div>
+{% endblock %}

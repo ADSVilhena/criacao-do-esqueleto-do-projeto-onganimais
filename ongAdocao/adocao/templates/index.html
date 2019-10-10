@@ -1,48 +1,64 @@
 {% extends 'base.html' %}
 
 {% block bloco %}
-{% load staticfiles %}
-
-<div class="box">
-    <h1>Nossos peludos estão ansiosos á espera de um lar!</h1>
+    <div class="teste"><p>Nossos peludos estão ansiosos à espera de um lar!</p>
+        <a href="#" class="btn-ajudar">Quero ajudar</a>
+        <a href="#" class="btn-adotar">Adotar</a>
+    </div>
+    <div class="container">
+        {% if animais %}
         <ul class="cards">
             {% for Animal in animais %}
-            <li class="cards_item"> 
-            <a href="#">
-                <div class="card">
-                    <div class="card_image">
-                        <img src="{{Animal.imagemAnimal.url}} ">
-                    </div>
-            </a>           
-                    <div class="card_content">
-                        <h2 class="card_title">{{Animal.nomeAnimal}}</h2>
-                        <p class="card_text">{{Animal.get_sexo_display}}</p>
-                        <p class="card_text">{{Animal.get_porte_display}}</p>
-                        <div class="botao">
-                            <button class="btn card_btn">Ver Mais</button>
+                <li class="cards_item"> 
+                    <div class="card">
+                        <div class="card_image">
+                            <a href="{% url 'teste' Animal.id %}">
+                                <img src="{{Animal.imagemAnimal.url}}" class="img-thumbnail">
+                            </a>           
                         </div>
-                        
+                        <div class="card_content">
+                            <h2 class="card_title">{{Animal.nomeAnimal}}</h2>
+                            <p class="card_text">{{Animal.get_sexo_display}}</p>
+                            <p class="card_text">{{Animal.get_porte_display}}</p>
+                            <a href="{% url 'teste' Animal.id %}">
+                                <div class="botao">
+                                    <button class="btn card_btn">Ver Mais</button>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-             
-            </li>
+                </li>
             {% endfor %}
         </ul>
-</div>
-
-
-<div class="d-flex justify-content-center">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        {% if animais.has_previous %}
-        <li class="page-item"><a class="page-link" href="?page=1">Primeira</a></li>
+        {% else %}
+        <p>Não há animais para a adoção </p>
         {% endif %}
-        {% if animais.has_next %}
-        <li class="page-item"><a class="page-link" href="?page={{ animais.next_page_number }}">Próxima</a></li>
-        <li class="page-item"><a class="page-link" href="?page={{ animais.paginator.num_pages }}">Última</a></li>
-        {% endif %}
-      </ul>
-    </nav>
     </div>
 
+
+   
+     <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if animais.has_previous %}
+            <li class="page-ite">
+                <a class="page-link" href="?page=1">Primeira</a>
+            </li>
+            
+            <li class="page-item"><a class="page-link" href="?page={{ animais.previous_page_number }}">Anterior</a></li>
+            
+            {% endif %}
+            {% if animais.has_next %}
+            <li class="page-item active " aria-current="page">
+                <a class="page-link" href="?page={{ animais.next_page_number }}">2  <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ animais.paginator.num_pages }}">Ultima</a>
+            </li>
+            {% endif %}
+        </ul>
+        </nav>
+    </div> 
+
+    
 {% endblock %}

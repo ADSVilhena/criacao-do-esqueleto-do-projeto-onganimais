@@ -5,22 +5,21 @@ body{
     font-family: sans-serif;
 }
 */
+
+
 .card_image{    
     height: 300px;
     overflow: hidden;
-   
+    width: 100%;
+    /* position: relative; */
 }
 .card_image img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
+    /* position: absolute;     */
 }
-/*
-.card-img img{
-    background-size: contain;
-}
-*/
 
 .box{
     max-width: 1200px;
@@ -39,7 +38,7 @@ body{
   }
 
   .botao{
-    background: #eff30a;
+    background: #F7AE29;
   }
 
   .btn {
@@ -107,8 +106,13 @@ body{
     letter-spacing: 1px;
     text-transform: capitalize;
     margin: 0px;
+    
   }
-  
+  /* .container{
+    padding-top: 15px;
+    max-width: 85% !important;
+  } */
+
   .card_text {
     color: #000000;
     font-size: 0.875rem;
@@ -127,61 +131,51 @@ body{
     color: #5e95ff;
     font-weight: 700;
   }
-
-
-/* .card-img-top{
-    height: 200px;
-    background-size: cover;
-} */
-/*
-.box{
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .img-thumbnail{
+    border: none !important;
+  }
+.teste{
+  width: 100%;
+  height: 80vh;
+  padding: 5em;
+  background-image: url("../images/dog.png");
+}
+.teste p{
+  font-size: 2.5em;
+  color: white;
+  max-width: 400px;
+  margin-top: 1em;
 }
 
-.card-deck{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.card{
-    display: block;
-    width: 40px;
-    height: 100px;
+.btn-adotar, .btn-ajudar{
+  text-decoration: none;
+  color: white;
+  padding: 1em 2em;
+  border-radius: 4px;
+  transition: .5s;
 }
 
-h1{
-    text-align: center;
+.btn-adotar{
+  background-color:  #F1D434;
+  margin-left: 1em;
 }
-
-.card-img-top{
-    position: relative;
-    width: 300px;
-    height: 250px;
+.btn-ajudar{
+  background-color: #23C6C8;
 }
-*/
-
-/*.cardAnimal div{
-    background-color: aquamarine;
-    list-style: none;
-    text-decoration: none;
+.btn-adotar:hover{
+  text-decoration: none;
+  background-color: rgb(216, 189, 36);
+  color: white;
 }
-.imagemAnimal{
-    width: 100px;
-    height: 100px;
-    border-radius: 10%;
+.btn-ajudar:hover{
+  text-decoration: none;
+  background-color: #272626;
+  color: white;
 }
-.imagemCardAnimal{
-    max-width: 100%;
-    max-height: 100%;
-    width: 250px;
-    height: 250px;
-    border-radius: 10%;
+@media screen and (max-width:400px){
+  .card_image{
+    max-height: 50%;
+    max-width: 50%;
+  }
 }
-*/
-
-
 

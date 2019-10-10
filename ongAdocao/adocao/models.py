@@ -43,7 +43,6 @@ class Animal(models.Model):
     def __str__(self):
         return f"{self.nomeAnimal} ({self.descricao})"
 
-    
     class Meta:
         verbose_name_plural = 'animais'
 
@@ -60,6 +59,7 @@ class Pessoa(models.Model):
     enderecoPessoa= models.CharField(
         max_length=255, null=False, blank=False
     )
+
     def __str__(self):
         return self.nomePessoa
 
@@ -69,8 +69,6 @@ class Adocao(models.Model):
     animal = models.ForeignKey(Animal,on_delete=models.CASCADE)
     pessoa = models.ForeignKey(Pessoa,on_delete=models.CASCADE)
     funcionario = models.ForeignKey(User,on_delete=models.CASCADE)
-    
-    
 
     def __str__(self):
         return self.animal.nomeAnimal
