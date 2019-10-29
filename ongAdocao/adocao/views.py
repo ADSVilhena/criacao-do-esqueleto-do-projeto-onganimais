@@ -14,11 +14,12 @@ def teste(request,idAnimal):
 
 
 def index(request):
-	index = Animal.objects.all()
-	paginator = Paginator(index, 8)
+	animais = Animal.objects.filter(adotado=False)
+	adotados = Animal.objects.filter(adotado=True)[:4]
+	paginator = Paginator(animais, 8)
 	page = request.GET.get('page')
 	posts = paginator.get_page(page)
-	return render(request, 'index.html', {'animais':posts})
+	return render(request, 'index.html',{'animais':posts,'animaisAdotados':adotados})
 
 
 

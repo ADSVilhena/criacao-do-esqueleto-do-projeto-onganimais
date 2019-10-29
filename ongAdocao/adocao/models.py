@@ -46,6 +46,9 @@ class Animal(models.Model):
     class Meta:
         verbose_name_plural = 'animais'
 
+    class Meta:
+       ordering = ['nomeAnimal']
+
 class Pessoa(models.Model):
     nomePessoa = models.CharField(
         max_length=255, null=False, blank=False
@@ -62,7 +65,6 @@ class Pessoa(models.Model):
 
     def __str__(self):
         return self.nomePessoa
-
 
 class Adocao(models.Model):
     data_adocao =  models.DateTimeField(default=now, editable=False)
